@@ -1,0 +1,165 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repos.zeroturnaround.com/nexus/content/groups/zt-public/" }
+        jcenter()
+    }
+    dependencies {
+        classpath group: 'org.zeroturnaround', name: 'gradle-jrebel-plugin', version: '1.1.2'
+        classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.7'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
+
+defaultTasks 'clean', 'build'
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+version = '0.1-SNAPSHOT'
+group = 'rooms'
+
+configurations {
+    markdownDoclet
+    umlCreation
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    markdownDoclet('ch.raffael.pegdown-doclet:pegdown-doclet:1.1.1')
+    umlCreation group: 'net.sourceforge.plantuml', name: 'plantuml', version: '7991'
+
+}
+
+ext {
+    springVersion = '4.0.4.RELEASE'
+    springDataCommonsVersion = '1.7.1.RELEASE'
+}
+
+subprojects {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    apply plugin: 'java'
+    apply plugin: 'rebel'
+    apply plugin: 'nexus'
+
+    group = 'us.ilmark.deta.rooms'
+    version = '0.1-SNAPSHOT'
+
+    configurations {
+        markdownDoclet
+    }
+
+    dependencies {
+
+        compile("org.slf4j:slf4j-api:1.7.+")
+        compile("org.hibernate:hibernate-validator:5.1.0.Final")
+
+        testCompile("junit:junit:4+")
+        testCompile("org.hamcrest:hamcrest-core:1.3")
+        testCompile("org.hamcrest:hamcrest-library:1.3")
+        testCompile("org.mockito:mockito-core:1.9.5")
+
+
+        markdownDoclet('ch.raffael.pegdown-doclet:pegdown-doclet:1.1.1')
+    }
+
+    jar.dependsOn(generateRebel)
+
+    javadoc {
+
+        options.docletpath = configurations.markdownDoclet.files.asType(List)
+        options.doclet = 'ch.raffael.doclets.pegdown.PegdownDoclet'
+        options.addStringOption("extensions", "autolinks,definitions,smartypants,tables,wikilinks,fenced-code-blocks")
+        options.links = [
+                "http://docs.oracle.com/javase/8/docs/api/",
+                "http://docs.guava-libraries.googlecode.com/git-history/v15.0/javadoc/"
+        ]
+    }
+
+    modifyPom {
+        project {
+            name ext.name
+            description ext.description
+            url 'http://rooms.deta.ilmark.us/'
+            inceptionYear '2014'
+
+            scm {
+                url 'https://github.com/makkus/things'
+                connection 'scm:https://github.com/makkus/things.git'
+                developerConnection 'scm:git://github.com/makkus/things.git'
+            }
+
+            licenses {
+                license {
+                    name 'GNU Lesser General Public License, version 3'
+                    url 'https://www.gnu.org/licenses/lgpl-3.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    id 'makkus'
+                    name 'Markus Binsteiner'
+                    email 'makkus@gmail.com'
+                }
+            }
+        }
+    }
+}
+
+
+def exportedProjects = ["backroom"]
+
+task alldocs(type: Javadoc) {
+
+    title = "Things Project API docs (version $version)"
+    destinationDir = file("${buildDir}/docs/javadoc")
+
+    source exportedProjects.collect {
+        project(it).sourceSets.main.allJava
+    }
+    classpath = files(exportedProjects.collect {
+        project(it).sourceSets.main.compileClasspath
+    })
+
+    options.docletpath = configurations.markdownDoclet.files.asType(List)
+    options.doclet = 'ch.raffael.doclets.pegdown.PegdownDoclet'
+    options.addStringOption("extensions", "autolinks,definitions,smartypants,tables,wikilinks,fenced-code-blocks")
+    options.links = [
+            "http://docs.oracle.com/javase/8/docs/api/",
+            "http://docs.guava-libraries.googlecode.com/git-history/v15.0/javadoc/",
+            "http://netflix.github.io/RxJava/javadoc/"
+    ]
+}
+
+task uml(type: JavaExec) {
+    classpath configurations.umlCreation
+    main = 'net.sourceforge.plantuml.Run'
+    def plantUmlFiles
+    try {
+        plantUmlFiles = new File(projectDir, 'doc').listFiles(
+                [accept: { file -> file ==~ /.*?\.plantuml/ }] as FileFilter).toList()*.absolutePath
+    } catch (e) {
+        // that's fine
+    }
+    if (!plantUmlFiles) {
+        plantUmlFiles = ['--']
+    }
+    args = plantUmlFiles
+}
+
