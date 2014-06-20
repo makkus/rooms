@@ -1,0 +1,58 @@
+/*
+Syntax error: File to import not found or unreadable: bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.
+              Load path: /home/markus/src/personal/rooms/frontroom/app/styles (DEPRECATED)
+        on line 3 of main.scss
+
+1: $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+2: 
+3: @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+4: 
+5: // bower:scss
+6: @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+7: // endbower
+8: 
+
+Backtrace:
+main.scss:3
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/import_node.rb:66:in `rescue in import'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/import_node.rb:45:in `import'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/import_node.rb:28:in `imported_file'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/import_node.rb:37:in `css_import?'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:283:in `visit_import'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/stack.rb:121:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:151:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/tree/root_node.rb:20:in `render'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/engine.rb:274:in `render'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:378:in `update_stylesheet'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:186:in `each'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/plugin.rb:82:in `update_stylesheets'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/exec.rb:489:in `watch_or_update'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/exec.rb:346:in `process_result'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/exec.rb:43:in `parse'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/lib/sass/exec.rb:22:in `parse!'
+/var/lib/gems/1.9.1/gems/sass-3.3.8/bin/scss:13:in `<top (required)>'
+/usr/local/bin/scss:23:in `load'
+/usr/local/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.\A               Load path: /home/markus/src/personal/rooms/frontroom/app/styles (DEPRECATED)\A         on line 3 of main.scss\A \A 1: $icon-font-path: \"/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/\";\A 2: \A 3: @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';\A 4: \A 5: // bower:scss\A 6: @import \"../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss\";\A 7: // endbower\A 8: "; }

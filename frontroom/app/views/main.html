@@ -1,36 +1,36 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">rooms web</h3>
+<div ng-controller="MainCtrl">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 lightbox" ng-repeat="(key, state) in states">
+                <div class="lightbox_inner">
+                    <div class="lighticon">
+                        <img ng-show="state.value.on == false" src="light_off.png" alt="off">
+                        <img ng-show="state.value.on == true" src="light_on.png" alt="on">
+                    </div>
+                    <div class="lightname">{{key}}</div>
+                    <div class="text-right">
+                        <div class="btn-group lightbuttons">
+                            <button class="btn btn-default" ng-click="commands.switch_on(key, false)">Off</button>
+                            <button class="btn btn-default" ng-click="commands.switch_on(key, true)">On</button>
+                        </div>
+                    </div>
+                    <div class="slider_brightness slidercontainer">
+                        <slider ng-model="brightness[key]" floor="0" ceiling="10"/>
+                    </div>
+                    <div class="slider_warmth slidercontainer">
+                        <slider ng-model="warmth[key]" floor="0" ceiling="10"/>
+                    </div>
+                    <!--<div>-->
+                        <!--Floor: <input type='text' ng-model='brightness' ng-init='floor = 1'/><br/>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div>
+    <p id="response"></p>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-<div class="footer">
-  <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-</div>

@@ -1,3 +1,7 @@
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Copy
+
+jar.dependsOn ':frontroom:build'
+
 buildscript {
     repositories {
         maven { url "http://repo.spring.io/libs-snapshot" }
@@ -32,6 +36,8 @@ targetCompatibility = 1.8
 
 dependencies {
 
+    compile project(':frontroom')
+
     compile ('us.ilmark.deta.things:things-core:0.1-SNAPSHOT')
 //    compile project(':things-jpa')
     compile ('us.ilmark.deta.things:things-rest:0.1-SNAPSHOT')
@@ -57,7 +63,8 @@ dependencies {
 
 }
 
-task copyToLib(type: Copy) {
-    into "$buildDir/output/lib"
-    from configurations.runtime
-}
+//task copyToLib(type: Copy) {
+//    into "$buildDir/output/lib"
+//    from configurations.runtime
+//}
+

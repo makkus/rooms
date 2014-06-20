@@ -1,0 +1,52 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.api.tasks.Exec
+
+apply plugin: 'java'
+
+task npm(type: Exec) {
+    group = "Build"
+    description = "Installs all Node.js dependencies defined in package.json"
+    commandLine = ["npm", "install"]
+    inputs.file "package.json"
+    outputs.dir "node_modules"
+}
+
+class GruntTask extends Exec {
+    private String gruntExecutable = Os.isFamily(Os.FAMILY_WINDOWS) ? "grunt.cmd" : "grunt"
+    def gruntArgs = ""
+
+    public GruntTask() {
+        super()
+        this.setExecutable(gruntExecutable)
+    }
+
+    public void setGruntArgs(String gruntArgs) {
+        this.args = "$gruntArgs".trim().split(" ") as List
+    }
+}
+
+task grunt_build(type: GruntTask) {
+    group = "Build"
+    description = "Builds the frontend"
+    gruntArgs = "--force"
+
+//    inputs.dir "app"
+//    inputs.file file("Gruntfile.js")
+//    inputs.file file("package.json")
+}
+
+
+
+
+task webjar(type: Jar, dependsOn: "jar") {
+    group = "Other"
+    description = "Packages up resources into jar"
+    from(fileTree("dist")) {
+        into "META-INF/resources"
+    }
+}
+grunt_build.dependsOn npm
+webjar.dependsOn grunt_build
+
+build.dependsOn webjar
+

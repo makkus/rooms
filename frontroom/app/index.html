@@ -30,18 +30,10 @@
 <!-- Add your site or application content here -->
 <div class="container" ng-view=""></div>
 
-<body onload="connect()">
+<body >
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
     enabled. Please enable
     Javascript and reload this page!</h2></noscript>
-<div>
-
-    <div id="conversationDiv">
-        <label>What is your name?</label><input type="text" id="name"/>
-        <button id="sendName" onclick="sendName();">Send</button>
-        <p id="response"></p>
-    </div>
-</div>
 </body>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -87,15 +79,19 @@
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/stomp-websocket/lib/stomp.js"></script>
 <script src="bower_components/sockjs/sockjs.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/venturocket-angular-slider/build/angular-slider.js"></script>
+<script src="bower_components/stomp-websocket/lib/stomp.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/mine.js"></script>
+<script src="scripts/services/lights.js"></script>
+<script src="scripts/services/lightsservice.js"></script>
 <script src="scripts/controllers/main.js"></script>
+<script src="scripts/services/lightcontrol.js"></script>
 <!-- endbuild -->
 </body>
 </html>

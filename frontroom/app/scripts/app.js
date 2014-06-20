@@ -5,7 +5,8 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+        'vr.directives.slider'
   ])
   .config(function ($routeProvider) {
     $routeProvider
