@@ -25,7 +25,7 @@ build/
 frontroom/node_modules/
 frontroom/app/bower_components/
 *.log
-rooms-web/build/
-rooms-web/dist/
+frontroom/build/
+frontroom/dist/
 
 
