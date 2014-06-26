@@ -38,9 +38,9 @@ dependencies {
 
     compile project(':frontroom')
 
-    compile ('us.ilmark.deta.things:things-core:0.1-SNAPSHOT')
+    compile ('us.ilmark.deta.things:things-core:0.2-SNAPSHOT')
 //    compile project(':things-jpa')
-    compile ('us.ilmark.deta.things:things-rest:0.1-SNAPSHOT')
+    compile ('us.ilmark.deta.things:things-rest:0.2-SNAPSHOT')
     compile('com.google.guava:guava:17.0')
 
     compile("org.springframework.boot:spring-boot-starter-parent:" + springBootVersion)
@@ -49,7 +49,7 @@ dependencies {
 //    compile("org.springframework:spring-tx:" + springVersion)
 
     compile("org.springframework.boot:spring-boot-starter-web:" + springBootVersion) {
-        exclude module: "spring-boot-starter-tomcat"
+        exclude module: "spring-boot-starter-jetty"
     }
 
     compile("org.springframework.boot:spring-boot-starter-websocket:" + springBootVersion)

@@ -1,5 +1,7 @@
 'use strict';
 
+var base_url = 'http://'+document.location.hostname
+
 angular.module('roomsWebApp')
     .service('Lightservice', ['$rootScope', 'Lightstate', 'Lightcontrol', function ($rootScope, Lightstate, Lightcontrol) {
 
@@ -55,7 +57,7 @@ angular.module('roomsWebApp')
         }
 
         function connect() {
-            var socket = new SockJS('http://localhost:8084/hello');
+            var socket = new SockJS('http://localhost:8084/rooms');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function (frame) {
                 console.log('Connected: ' + frame);

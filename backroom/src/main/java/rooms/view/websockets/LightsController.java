@@ -33,7 +33,7 @@ import rooms.types.LightState;
 public class LightsController {
 
 
-    @MessageMapping("/hello")
+    @MessageMapping("/")
     @SendTo("/topic/light_change")
     public LightState stateChanged(LightState ls) {
         System.out.println("CHANGE: " + ls);

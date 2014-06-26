@@ -5,6 +5,7 @@
             <div class="col-md-4 lightbox" ng-repeat="(key, state) in states">
                 <div class="lightbox_inner">
                     <div class="lighticon">
+                        <img ng-show="state.value.on == null" src="light_off.png" alt="off">
                         <img ng-show="state.value.on == false" src="light_off.png" alt="off">
                         <img ng-show="state.value.on == true" src="light_on.png" alt="on">
                     </div>

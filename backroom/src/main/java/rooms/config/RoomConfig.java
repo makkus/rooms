@@ -46,10 +46,10 @@ import things.connectors.xstream.XstreamConnector;
 import things.thing.ActionManager;
 import things.thing.DefaultActionManager;
 import things.thing.ThingControl;
+import things.thing.ThingsObjectMapper;
 import things.types.AnnotationTypeFactory;
 import things.types.ThingType;
 import things.types.TypeRegistry;
-import things.utils.json.ThingsObjectMapper;
 
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -101,7 +101,7 @@ public class RoomConfig {
 
     @Bean
     public ObjectMapper objectMapper() {
-        ThingsObjectMapper tom = new ThingsObjectMapper();
+        ThingsObjectMapper tom = new ThingsObjectMapper(typeRegistry());
         return tom;
     }
 

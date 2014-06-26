@@ -61,7 +61,7 @@ public class LightUtil {
         Thing<LightState> lightState = new Thing();
         lightState.setId("light:" + light.getId());
         lightState.setThingType(tr.getType(LightState.class));
-        lightState.setValueIsPopulated(false);
+        lightState.setValueIsPopulated(true);
         lightState.setValue(ls);
         lightState.setKey(light.getKey());
         return lightState;
